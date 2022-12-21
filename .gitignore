@@ -2,7 +2,6 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-[Pp]rojectSettings/
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
