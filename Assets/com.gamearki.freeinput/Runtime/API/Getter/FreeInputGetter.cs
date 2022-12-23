@@ -15,13 +15,13 @@ namespace FreeInput.API.Getter {
             this.facades = facades;
         }
 
-        bool IFreeInputGetter.GetEvent(ushort eventID) {
+        bool IFreeInputGetter.HasTriggered(ushort id) {
             var dic = facades.eventDic;
             var e = dic.Keys.GetEnumerator();
             while (e.MoveNext()) {
                 var key = e.Current;
                 var evID = (ushort)(key >> 16);
-                if (evID == eventID) {
+                if (evID == id) {
                     var keyCodeModel = dic[key];
                     if (keyCodeModel.isTrue) {
                         return true;

@@ -13,15 +13,15 @@ namespace FreeInput.Test
         void Awake()
         {
             core = new FreeInputCore();
-            core.ISetter.BindEvent_Key(moveEventID, KeyCode.W, KeyCodeStatus.All);
-            core.ISetter.BindEvent_Key(moveEventID, KeyCode.UpArrow, KeyCodeStatus.All);
-            core.ISetter.BindEvent_Key(moveEventID, KeyCode.Keypad8, KeyCodeStatus.All);
+            core.ISetter.BindWithKeyCode(moveEventID, KeyCode.W, KeyCodeStatus.All);
+            core.ISetter.BindWithKeyCode(moveEventID, KeyCode.UpArrow, KeyCodeStatus.All);
+            core.ISetter.BindWithKeyCode(moveEventID, KeyCode.Keypad8, KeyCodeStatus.All);
         }
 
         void Update()
         {
-            core.ISetter.TickEvent();
-            if (core.IGetter.GetEvent(moveEventID)) Debug.Log($"前进");
+            core.ISetter.Tick();
+            if (core.IGetter.HasTriggered(moveEventID)) Debug.Log($"前进");
         }
 
         void OnGUI()

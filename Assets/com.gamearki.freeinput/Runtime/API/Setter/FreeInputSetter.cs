@@ -15,7 +15,7 @@ namespace FreeInput.API.Setter
             this.facades = facades;
         }
 
-        void IFreeInputSetter.TickEvent()
+        void IFreeInputSetter.Tick()
         {
             var eventDic = facades.eventDic;
             var keys = eventDic.Keys;
@@ -47,7 +47,7 @@ namespace FreeInput.API.Setter
             }
         }
 
-        void IFreeInputSetter.BindEvent_Key(ushort eventID, KeyCode keyCode, KeyCodeStatus keyCodeStatus)
+        void IFreeInputSetter.BindWithKeyCode(ushort eventID, KeyCode keyCode, KeyCodeStatus keyCodeStatus)
         {
             var key = CombineKey(eventID, keyCode);
             KeyCodeModel keyCodeModel = new KeyCodeModel();
