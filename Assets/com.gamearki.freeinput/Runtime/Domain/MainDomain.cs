@@ -19,76 +19,36 @@ namespace FreeInput.Domain
             this.facades = facades;
         }
 
-        public bool HasTriggered(ushort id)
-        {
-            var dic = facades.bindDic;
-            var e = dic.Keys.GetEnumerator();
-            while (e.MoveNext())
-            {
-                var key = e.Current;
-                var evID = (ushort)(key >> 16);
-                if (evID == id)
-                {
-                    var keyCodeModel = dic[key];
-                    if (keyCodeModel.isTrue)
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-        }
-
-        public void TickInput()
-        {
-            var eventDic = facades.bindDic;
-            var keys = eventDic.Keys;
-            var e = keys.GetEnumerator();
-            while (e.MoveNext())
-            {
-                var key = e.Current;
-                var keyCodeModel = eventDic[key];
-                var keyCode = (KeyCode)(ushort)key;
-                if (keyCodeModel.keyCodeStatus.Contains(KeyCodeStatus.Down) && Input.GetKeyDown(keyCode))
-                {
-                    keyCodeModel.isTrue = true;
-                    return;
-                }
-
-                if (keyCodeModel.keyCodeStatus.Contains(KeyCodeStatus.Pressing) && Input.GetKey(keyCode))
-                {
-                    keyCodeModel.isTrue = true;
-                    return;
-                }
-
-                if (keyCodeModel.keyCodeStatus.Contains(KeyCodeStatus.Up) && Input.GetKeyUp(keyCode))
-                {
-                    keyCodeModel.isTrue = true;
-                    return;
-                }
-
-                keyCodeModel.isTrue = false;
-            }
-        }
-
-        public void BindWithKeyCode(ushort bindID, KeyCode keyCode, KeyCodeStatus keyCodeStatus)
+        public void BindWithKeyCode(ushort bindID, KeyCode keyCode)
         {
             var key = CombineKey(bindID, keyCode);
             var bindDic = facades.bindDic;
-            if (!bindDic.TryGetValue(key, out var keyCodeModel))
-            {
-                keyCodeModel = new KeyCodeModel();
-                bindDic.Add(key, keyCodeModel);
-            }
-
-            keyCodeModel.keyCodeStatus = keyCodeStatus;
-            keyCodeModel.isTrue = false;
+            var model = new KeyCodeModel();
+            model.status = KeyCodeStatus.All;
+            bindDic.Add(key, model);
         }
 
-        public void UnbindWithKeyCode(ushort id, KeyCode keyCode)
+        public void BindWithKeyCode(ushort bindID, KeyCode keyCode, KeyCodeStatus status)
         {
-            var key = CombineKey(id, keyCode);
+            var key = CombineKey(bindID, keyCode);
+            var bindDic = facades.bindDic;
+            var model = new KeyCodeModel();
+            model.status = status;
+            bindDic.Add(key, model);
+        }
+
+        public void RebindWithKeyCode(ushort bindID, KeyCode oldKeyCode, KeyCode newKeyCode)
+        {
+            var oldKey = CombineKey(bindID, oldKeyCode);
+            var bindDic = facades.bindDic;
+            bindDic.Remove(oldKey);
+            var newKey = CombineKey(bindID, newKeyCode);
+            bindDic.Add(newKey, new KeyCodeModel());
+        }
+
+        public void UnbindWithKeyCode(ushort bindID, KeyCode keyCode)
+        {
+            var key = CombineKey(bindID, keyCode);
             facades.bindDic.Remove(key);
         }
 
@@ -120,9 +80,26 @@ namespace FreeInput.Domain
             facades.bindDic.Clear();
         }
 
-        public bool ContainsBind(ushort id, KeyCode keyCode)
+        public bool HasKeyTriggered(ushort bindID)
         {
-            var key = CombineKey(id, keyCode);
+            var dic = facades.bindDic;
+            var e = dic.Keys.GetEnumerator();
+            while (e.MoveNext())
+            {
+                var key = e.Current;
+                var id = key >> 16;
+                if (id == bindID && dic[key].hasTriggered)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool ContainsBind(ushort bindID, KeyCode keyCode)
+        {
+            var key = CombineKey(bindID, keyCode);
             return facades.bindDic.ContainsKey(key);
         }
 

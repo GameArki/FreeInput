@@ -15,34 +15,40 @@ namespace FreeInput.API.Setter
             this.facades = facades;
         }
 
-        void IFreeInputSetter.TickInput()
+        void IFreeInputSetter.BindWithKeyCode(ushort bindID, KeyCode keyCode)
         {
             var domain = facades.MainDomain;
-            domain.TickInput();
+            domain.BindWithKeyCode(bindID, keyCode);
         }
 
-        void IFreeInputSetter.BindWithKeyCode(ushort id, KeyCode keyCode, KeyCodeStatus keyCodeStatus)
+        void IFreeInputSetter.BindWithKeyCode(ushort bindID, KeyCode keyCode, KeyCodeStatus status)
         {
             var domain = facades.MainDomain;
-            domain.BindWithKeyCode(id, keyCode, keyCodeStatus);
+            domain.BindWithKeyCode(bindID, keyCode, status);
         }
 
-        void IFreeInputSetter.UnbindWithKeyCode(ushort id, KeyCode keyCode)
+        void IFreeInputSetter.UnbindWithKeyCode(ushort bindID, KeyCode keyCode)
         {
             var domain = facades.MainDomain;
-            domain.UnbindWithKeyCode(id, keyCode);
+            domain.UnbindWithKeyCode(bindID, keyCode);
         }
 
-        void IFreeInputSetter.Unbind(ushort id)
+        void IFreeInputSetter.Unbind(ushort bindID)
         {
             var domain = facades.MainDomain;
-            domain.Unbind(id);
+            domain.Unbind(bindID);
         }
 
         void IFreeInputSetter.UnbindAll()
         {
             var domain = facades.MainDomain;
             domain.UnbindAll();
+        }
+
+        void IFreeInputSetter.RebindWithKeyCode(ushort bindID, KeyCode oldKeyCode, KeyCode newKeyCode)
+        {
+            var domain = facades.MainDomain;
+            domain.RebindWithKeyCode(bindID, oldKeyCode, newKeyCode);
         }
     }
 

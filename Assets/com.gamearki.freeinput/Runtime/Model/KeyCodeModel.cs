@@ -1,10 +1,12 @@
 
-namespace FreeInput.Generic {
+namespace FreeInput.Generic
+{
 
-    public class KeyCodeModel {
+    public class KeyCodeModel
+    {
 
-        public KeyCodeStatus keyCodeStatus;
-        public bool isTrue;
+        public KeyCodeStatus status;
+        public bool hasTriggered;
 
     }
 

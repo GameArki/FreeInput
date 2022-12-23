@@ -13,36 +13,37 @@ namespace FreeInput.Test
         void Awake()
         {
             core = new FreeInputCore();
-            core.ISetter.BindWithKeyCode(moveBindID, KeyCode.W, KeyCodeStatus.All);
-            core.ISetter.BindWithKeyCode(moveBindID, KeyCode.UpArrow, KeyCodeStatus.All);
-            core.ISetter.BindWithKeyCode(moveBindID, KeyCode.Keypad8, KeyCodeStatus.All);
+
         }
 
         void Update()
         {
-            core.ISetter.TickInput();
-            if (core.IGetter.HasTriggered(moveBindID)) Debug.Log($"前进");
+            core.Tick();
+            if (core.Getter.HasKeyTriggered(moveBindID)) Debug.Log($"前进");
         }
 
         void OnGUI()
         {
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("解除绑定W"))
-            {
-                core.ISetter.UnbindWithKeyCode(moveBindID, KeyCode.W);
-            }
-            if (GUILayout.Button("解除绑定UpArrow"))
-            {
-                core.ISetter.UnbindWithKeyCode(moveBindID, KeyCode.UpArrow);
-            }
-            if (GUILayout.Button("解除绑定Keypad8"))
-            {
-                core.ISetter.UnbindWithKeyCode(moveBindID, KeyCode.Keypad8);
-            }
-            if (GUILayout.Button("解除所有绑定"))
-            {
-                core.ISetter.Unbind(moveBindID);
-            }
+
+            GUILayout.BeginVertical();
+            if (GUILayout.Button("绑定 W")) core.Setter.BindWithKeyCode(moveBindID, KeyCode.W);
+            if (GUILayout.Button("绑定 UpArrow")) core.Setter.BindWithKeyCode(moveBindID, KeyCode.UpArrow);
+            if (GUILayout.Button("绑定 Keypad8")) core.Setter.BindWithKeyCode(moveBindID, KeyCode.Keypad8);
+            GUILayout.EndVertical();
+
+            GUILayout.BeginVertical();
+            if (GUILayout.Button("解除绑定 W")) core.Setter.UnbindWithKeyCode(moveBindID, KeyCode.W);
+            if (GUILayout.Button("解除绑定 UpArrow")) core.Setter.UnbindWithKeyCode(moveBindID, KeyCode.UpArrow);
+            if (GUILayout.Button("解除绑定 Keypad8")) core.Setter.UnbindWithKeyCode(moveBindID, KeyCode.Keypad8);
+            if (GUILayout.Button("解除所有绑定")) core.Setter.Unbind(moveBindID);
+            GUILayout.EndVertical();
+
+            GUILayout.BeginVertical();
+            if (GUILayout.Button("换绑 W ---> U  ")) core.Setter.RebindWithKeyCode(moveBindID, KeyCode.W, KeyCode.U);
+            if (GUILayout.Button("换绑 U ---> W  ")) core.Setter.RebindWithKeyCode(moveBindID, KeyCode.U, KeyCode.W);
+            GUILayout.EndVertical();
+
             GUILayout.EndHorizontal();
         }
 

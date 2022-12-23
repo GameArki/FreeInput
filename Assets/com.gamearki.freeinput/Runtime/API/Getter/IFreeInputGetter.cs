@@ -1,8 +1,12 @@
-namespace FreeInput.API.Getter {
+using FreeInput.Generic;
 
-    public interface IFreeInputGetter {
+namespace FreeInput.API.Getter
+{
 
-        bool HasTriggered(ushort bindID);
+    public interface IFreeInputGetter
+    {
+
+        bool HasKeyTriggered(ushort bindID);
 
     }
 
