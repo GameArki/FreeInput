@@ -9,6 +9,9 @@ namespace FreeInput.API.Setter
 
         void TickInput();
         void BindWithKeyCode(ushort id, KeyCode keyCode, KeyCodeStatus keyCodeStatus);
+        void UnbindWithKeyCode(ushort id, KeyCode keyCode);
+        void Unbind(ushort id);
+        void UnbindAll();
 
     }
 

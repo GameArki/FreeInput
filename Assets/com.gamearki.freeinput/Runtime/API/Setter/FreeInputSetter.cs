@@ -21,12 +21,29 @@ namespace FreeInput.API.Setter
             domain.TickInput();
         }
 
-        void IFreeInputSetter.BindWithKeyCode(ushort eventID, KeyCode keyCode, KeyCodeStatus keyCodeStatus)
+        void IFreeInputSetter.BindWithKeyCode(ushort id, KeyCode keyCode, KeyCodeStatus keyCodeStatus)
         {
             var domain = facades.MainDomain;
-            domain.BindWithKeyCode(eventID, keyCode, keyCodeStatus);
+            domain.BindWithKeyCode(id, keyCode, keyCodeStatus);
         }
 
+        void IFreeInputSetter.UnbindWithKeyCode(ushort id, KeyCode keyCode)
+        {
+            var domain = facades.MainDomain;
+            domain.UnbindWithKeyCode(id, keyCode);
+        }
+
+        void IFreeInputSetter.Unbind(ushort id)
+        {
+            var domain = facades.MainDomain;
+            domain.Unbind(id);
+        }
+
+        void IFreeInputSetter.UnbindAll()
+        {
+            var domain = facades.MainDomain;
+            domain.UnbindAll();
+        }
     }
 
 }

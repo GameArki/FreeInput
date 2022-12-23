@@ -9,15 +9,15 @@ namespace FreeInput.Facades
     public class FreeInputFacades
     {
 
-        //     eventID          |        keycode       
+        //     bindID          |        keycode       
         //  0000 0000 0000 0000 | 0000 0000 0000 0000  
-        public Dictionary<uint, KeyCodeModel> eventDic;
+        public Dictionary<uint, KeyCodeModel> bindDic;
 
         public MainDomain MainDomain { get; private set; }
 
         public FreeInputFacades()
         {
-            eventDic = new Dictionary<uint, KeyCodeModel>();
+            bindDic = new Dictionary<uint, KeyCodeModel>();
             MainDomain = new MainDomain();
             MainDomain.Inject(this);
         }
