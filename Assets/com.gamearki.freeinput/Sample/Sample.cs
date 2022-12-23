@@ -20,7 +20,7 @@ namespace FreeInput.Test
 
         void Update()
         {
-            core.ISetter.Tick();
+            core.ISetter.TickInput();
             if (core.IGetter.HasTriggered(moveEventID)) Debug.Log($"前进");
         }
 

@@ -7,7 +7,7 @@ namespace FreeInput.API.Setter
     public interface IFreeInputSetter
     {
 
-        void Tick();
+        void TickInput();
         void BindWithKeyCode(ushort id, KeyCode keyCode, KeyCodeStatus keyCodeStatus);
 
     }
