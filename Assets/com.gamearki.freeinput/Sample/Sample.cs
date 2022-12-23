@@ -1,31 +1,31 @@
+using FreeInput.Generic;
 using UnityEngine;
 
-namespace FreeInput.Test {
+namespace FreeInput.Test
+{
 
-    public class Sample : MonoBehaviour {
+    public class Sample : MonoBehaviour
+    {
 
         FreeInputCore core;
         ushort moveEventID = 0;
 
-        void Awake() {
+        void Awake()
+        {
             core = new FreeInputCore();
-            core.ISetter.BindEvent_KeyDown(moveEventID, KeyCode.Space);
-            core.ISetter.BindEvent_KeyPressing(moveEventID, KeyCode.W);
-            core.ISetter.BindEvent_KeyPressing(moveEventID, KeyCode.A);
-            core.ISetter.BindEvent_KeyPressing(moveEventID, KeyCode.S);
-            core.ISetter.BindEvent_KeyPressing(moveEventID, KeyCode.D);
+            core.ISetter.BindEvent_Key(moveEventID, KeyCode.W, KeyCodeStatus.All);
+            core.ISetter.BindEvent_Key(moveEventID, KeyCode.UpArrow, KeyCodeStatus.All);
+            core.ISetter.BindEvent_Key(moveEventID, KeyCode.Keypad8, KeyCodeStatus.All);
         }
 
-        void Update() {
+        void Update()
+        {
             core.ISetter.TickEvent();
-            if (core.IGetter.GetEvent(moveEventID)) Debug.Log($"GetEvent------Movement  !!!");
-            if (core.IGetter.GetEvent(moveEventID, KeyCode.W)) Debug.Log($"GetEvent------Movement  W !!!");
-            if (core.IGetter.GetEvent(moveEventID, KeyCode.S)) Debug.Log($"GetEvent------Movement  S !!!");
-            if (core.IGetter.GetEvent(moveEventID, KeyCode.A)) Debug.Log($"GetEvent------Movement  A !!!");
-            if (core.IGetter.GetEvent(moveEventID, KeyCode.D)) Debug.Log($"GetEvent------Movement  D !!!");
+            if (core.IGetter.GetEvent(moveEventID)) Debug.Log($"前进");
         }
 
-        void OnGUI() {
+        void OnGUI()
+        {
 
         }
 

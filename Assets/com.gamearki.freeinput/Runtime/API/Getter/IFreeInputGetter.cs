@@ -6,8 +6,6 @@ namespace FreeInput.API.Getter {
 
         bool GetEvent(ushort eventID);
 
-        bool GetEvent(ushort eventID, KeyCode keyCode);
-
     }
 
 }

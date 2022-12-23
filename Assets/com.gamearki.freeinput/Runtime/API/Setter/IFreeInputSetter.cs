@@ -1,13 +1,14 @@
+using FreeInput.Generic;
 using UnityEngine;
 
-namespace FreeInput.API.Setter {
+namespace FreeInput.API.Setter
+{
 
-    public interface IFreeInputSetter {
+    public interface IFreeInputSetter
+    {
 
         void TickEvent();
-        void BindEvent_KeyDown(ushort eventID, KeyCode keyCode);
-        void BindEvent_KeyPressing(ushort eventID, KeyCode keyCode);
-        void BindEvent_KeyUp(ushort eventID, KeyCode keyCode);
+        void BindEvent_Key(ushort eventID, KeyCode keyCode, KeyCodeStatus keyCodeStatus);
 
     }
 

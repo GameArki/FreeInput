@@ -32,24 +32,6 @@ namespace FreeInput.API.Getter {
             return false;
         }
 
-        bool IFreeInputGetter.GetEvent(ushort eventID, KeyCode keyCode) {
-            var dic = facades.eventDic;
-            var e = dic.Keys.GetEnumerator();
-            while (e.MoveNext()) {
-                var key = e.Current;
-                var evID = (ushort)(key >> 16);
-                var kc = (KeyCode)(ushort)key;
-                if (evID == eventID && kc == keyCode) {
-                    var keyCodeModel = dic[key];
-                    if (keyCodeModel.isTrue) {
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-        }
-
     }
 
 }
