@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace FreeInput.API.Getter {
 
     public interface IFreeInputGetter {
@@ -5,6 +7,9 @@ namespace FreeInput.API.Getter {
         bool GetDown(ushort bindID);
         bool GetPressing(ushort bindID);
         bool GetUp(ushort bindID);
+        KeyCode GetCurrentDownKeyCode();
+        KeyCode GetCurrentPressingKeyCode();
+        KeyCode GetCurrentUpKeyCode();
 
     }
 

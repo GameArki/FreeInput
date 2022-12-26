@@ -1,4 +1,5 @@
 using FreeInput.Facades;
+using UnityEngine;
 
 namespace FreeInput.API.Getter {
 
@@ -27,6 +28,21 @@ namespace FreeInput.API.Getter {
         bool IFreeInputGetter.GetUp(ushort bindID) {
             var domain = facades.MainDomain;
             return domain.GetUp(bindID);
+        }
+
+        KeyCode IFreeInputGetter.GetCurrentDownKeyCode() {
+            var domain = facades.MainDomain;
+            return domain.GetCurrentDownKeyCode();
+        }
+
+        KeyCode IFreeInputGetter.GetCurrentPressingKeyCode() {
+            var domain = facades.MainDomain;
+            return domain.GetCurrentPressingKeyCode();
+        }
+
+        KeyCode IFreeInputGetter.GetCurrentUpKeyCode() {
+            var domain = facades.MainDomain;
+            return domain.GetCurrentUpKeyCode();
         }
 
     }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using FreeInput.Facades;
+using System;
 
 namespace FreeInput.Domain {
 
@@ -85,6 +86,42 @@ namespace FreeInput.Domain {
             }
 
             return false;
+        }
+
+        public KeyCode GetCurrentDownKeyCode() {
+            var e = Enum.GetValues(typeof(KeyCode)).GetEnumerator();
+            while (e.MoveNext()) {
+                KeyCode keyCode = (KeyCode)e.Current;
+                if (Input.GetKeyDown(keyCode)) {
+                    return keyCode;
+                }
+            }
+
+            return KeyCode.None;
+        }
+
+        public KeyCode GetCurrentPressingKeyCode() {
+            var e = Enum.GetValues(typeof(KeyCode)).GetEnumerator();
+            while (e.MoveNext()) {
+                KeyCode keyCode = (KeyCode)e.Current;
+                if (Input.GetKey(keyCode)) {
+                    return keyCode;
+                }
+            }
+
+            return KeyCode.None;
+        }
+
+        public KeyCode GetCurrentUpKeyCode() {
+            var e = Enum.GetValues(typeof(KeyCode)).GetEnumerator();
+            while (e.MoveNext()) {
+                KeyCode keyCode = (KeyCode)e.Current;
+                if (Input.GetKeyUp(keyCode)) {
+                    return keyCode;
+                }
+            }
+
+            return KeyCode.None;
         }
 
     }

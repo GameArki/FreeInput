@@ -17,6 +17,19 @@ namespace FreeInput.Test {
                 Debug.Log($"前进");
                 role.transform.position += Vector3.forward * UnityEngine.Time.deltaTime;
             }
+
+            var curKeyCode = core.Getter.GetCurrentDownKeyCode();
+            if (curKeyCode != KeyCode.None) {
+                Debug.Log($"当前输入按键 Down: {curKeyCode}");
+            }
+            curKeyCode = core.Getter.GetCurrentPressingKeyCode();
+            if (curKeyCode != KeyCode.None) {
+                Debug.Log($"当前输入按键 Pressing: {curKeyCode}");
+            }
+            curKeyCode = core.Getter.GetCurrentUpKeyCode();
+            if (curKeyCode != KeyCode.None) {
+                Debug.Log($"当前输入按键 Up: {curKeyCode}");
+            }
         }
 
         void OnGUI() {
