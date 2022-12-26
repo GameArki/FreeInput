@@ -15,28 +15,22 @@ namespace FreeInput.API.Setter
             this.facades = facades;
         }
 
-        void IFreeInputSetter.BindWithKeyCode(ushort bindID, KeyCode keyCode)
+        void IFreeInputSetter.BindKeyCode(ushort bindID, KeyCode keyCode)
         {
             var domain = facades.MainDomain;
-            domain.BindWithKeyCode(bindID, keyCode);
+            domain.BindKeyCode(bindID, keyCode);
         }
 
-        void IFreeInputSetter.BindWithKeyCode(ushort bindID, KeyCode keyCode, KeyCodeStatus status)
+        void IFreeInputSetter.BindStatus(ushort bindID, KeyCodeStatus status)
         {
             var domain = facades.MainDomain;
-            domain.BindWithKeyCode(bindID, keyCode, status);
+            domain.BindStatus(bindID, status);
         }
 
-        void IFreeInputSetter.UnbindWithKeyCode(ushort bindID, KeyCode keyCode)
+        void IFreeInputSetter.Unbind(ushort bindID, KeyCode keyCode)
         {
             var domain = facades.MainDomain;
-            domain.UnbindWithKeyCode(bindID, keyCode);
-        }
-
-        void IFreeInputSetter.Unbind(ushort bindID)
-        {
-            var domain = facades.MainDomain;
-            domain.Unbind(bindID);
+            domain.Unbind(bindID, keyCode);
         }
 
         void IFreeInputSetter.UnbindAll()
@@ -45,10 +39,15 @@ namespace FreeInput.API.Setter
             domain.UnbindAll();
         }
 
-        void IFreeInputSetter.RebindWithKeyCode(ushort bindID, KeyCode oldKeyCode, KeyCode newKeyCode)
+        void IFreeInputSetter.RebindKeyCode(ushort bindID, KeyCode oldKeyCode, KeyCode newKeyCode)
         {
             var domain = facades.MainDomain;
-            domain.RebindWithKeyCode(bindID, oldKeyCode, newKeyCode);
+            domain.RebindKeyCode(bindID, oldKeyCode, newKeyCode);
+        }
+
+        void IFreeInputSetter.RebindStatus(ushort bindID, KeyCodeStatus status)
+        {
+            throw new System.NotImplementedException();
         }
     }
 
