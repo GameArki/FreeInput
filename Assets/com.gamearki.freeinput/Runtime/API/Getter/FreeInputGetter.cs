@@ -17,10 +17,22 @@ namespace FreeInput.API.Getter
             this.facades = facades;
         }
 
-        bool IFreeInputGetter.IsTriggered(ushort bindID)
+        bool IFreeInputGetter.GetDown(ushort bindID)
         {
             var domain = facades.MainDomain;
-            return domain.IsTriggered(bindID);
+            return domain.GetDown(bindID);
+        }
+
+        bool IFreeInputGetter.GetPressing(ushort bindID)
+        {
+            var domain = facades.MainDomain;
+            return domain.GetPressing(bindID);
+        }
+
+        bool IFreeInputGetter.GetUp(ushort bindID)
+        {
+            var domain = facades.MainDomain;
+            return domain.GetUp(bindID);
         }
 
     }

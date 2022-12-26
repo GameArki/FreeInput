@@ -1,6 +1,5 @@
 using UnityEngine;
 using FreeInput.Facades;
-using FreeInput.Generic;
 
 namespace FreeInput.API.Setter
 {
@@ -15,16 +14,10 @@ namespace FreeInput.API.Setter
             this.facades = facades;
         }
 
-        void IFreeInputSetter.BindKeyCode(ushort bindID, KeyCode keyCode)
+        void IFreeInputSetter.Bind(ushort bindID, KeyCode keyCode)
         {
             var domain = facades.MainDomain;
-            domain.BindKeyCode(bindID, keyCode);
-        }
-
-        void IFreeInputSetter.BindStatus(ushort bindID, KeyCodeStatus status)
-        {
-            var domain = facades.MainDomain;
-            domain.BindStatus(bindID, status);
+            domain.Bind(bindID, keyCode);
         }
 
         void IFreeInputSetter.Unbind(ushort bindID, KeyCode keyCode)
@@ -39,16 +32,12 @@ namespace FreeInput.API.Setter
             domain.UnbindAll();
         }
 
-        void IFreeInputSetter.RebindKeyCode(ushort bindID, KeyCode oldKeyCode, KeyCode newKeyCode)
+        void IFreeInputSetter.Rebind(ushort bindID, KeyCode oldKeyCode, KeyCode newKeyCode)
         {
             var domain = facades.MainDomain;
             domain.RebindKeyCode(bindID, oldKeyCode, newKeyCode);
         }
 
-        void IFreeInputSetter.RebindStatus(ushort bindID, KeyCodeStatus status)
-        {
-            throw new System.NotImplementedException();
-        }
     }
 
 }
