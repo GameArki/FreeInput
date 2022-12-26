@@ -1,31 +1,25 @@
 using UnityEngine;
 
-namespace FreeInput.Test
-{
+namespace FreeInput.Test {
 
-    public class Sample : MonoBehaviour
-    {
+    public class Sample : MonoBehaviour {
 
         FreeInputCore core;
         ushort moveBindID = 0;
         public Transform role;
 
-        void Awake()
-        {
+        void Awake() {
             core = new FreeInputCore();
         }
 
-        void Update()
-        {
-            if (core.Getter.GetPressing(moveBindID))
-            {
+        void Update() {
+            if (core.Getter.GetPressing(moveBindID)) {
                 Debug.Log($"前进");
                 role.transform.position += Vector3.forward * UnityEngine.Time.deltaTime;
             }
         }
 
-        void OnGUI()
-        {
+        void OnGUI() {
             GUILayout.BeginHorizontal();
 
             GUILayout.BeginVertical();

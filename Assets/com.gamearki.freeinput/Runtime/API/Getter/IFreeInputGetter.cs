@@ -1,8 +1,6 @@
-namespace FreeInput.API.Getter
-{
+namespace FreeInput.API.Getter {
 
-    public interface IFreeInputGetter
-    {
+    public interface IFreeInputGetter {
 
         bool GetDown(ushort bindID);
         bool GetPressing(ushort bindID);

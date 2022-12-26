@@ -2,37 +2,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using FreeInput.Facades;
 
-namespace FreeInput.Domain
-{
+namespace FreeInput.Domain {
 
-    public class MainDomain
-    {
+    public class MainDomain {
 
         FreeInputFacades facades;
 
         public MainDomain() { }
 
-        public void Inject(FreeInputFacades facades)
-        {
+        public void Inject(FreeInputFacades facades) {
             this.facades = facades;
         }
 
-        public void Bind(ushort bindID, KeyCode keyCode)
-        {
+        public void Bind(ushort bindID, KeyCode keyCode) {
             var dic = facades.bindCodeDic;
-            if (!dic.TryGetValue(bindID, out var list))
-            {
+            if (!dic.TryGetValue(bindID, out var list)) {
                 list = new List<KeyCode>();
                 dic.Add(bindID, list);
             }
             list.Add(keyCode);
         }
 
-        public void RebindKeyCode(ushort bindID, KeyCode oldKeyCode, KeyCode newKeyCode)
-        {
+        public void RebindKeyCode(ushort bindID, KeyCode oldKeyCode, KeyCode newKeyCode) {
             var dic = facades.bindCodeDic;
-            if (!dic.TryGetValue(bindID, out var list))
-            {
+            if (!dic.TryGetValue(bindID, out var list)) {
                 return;
             }
 
@@ -40,30 +33,23 @@ namespace FreeInput.Domain
             list.Add(newKeyCode);
         }
 
-        public void Unbind(ushort bindID, KeyCode keyCode)
-        {
+        public void Unbind(ushort bindID, KeyCode keyCode) {
             var dic = facades.bindCodeDic;
-            if (!dic.TryGetValue(bindID, out var list))
-            {
+            if (!dic.TryGetValue(bindID, out var list)) {
                 return;
             }
             list.Remove(keyCode);
         }
 
-        public void UnbindAll()
-        {
+        public void UnbindAll() {
             facades.bindCodeDic.Clear();
         }
 
-        public bool GetDown(ushort bindID)
-        {
+        public bool GetDown(ushort bindID) {
             var dic = facades.bindCodeDic;
-            if (dic.TryGetValue(bindID, out var list))
-            {
-                for (int i = 0; i < list.Count; i++)
-                {
-                    if (Input.GetKeyDown(list[i]))
-                    {
+            if (dic.TryGetValue(bindID, out var list)) {
+                for (int i = 0; i < list.Count; i++) {
+                    if (Input.GetKeyDown(list[i])) {
                         return true;
                     }
                 }
@@ -73,15 +59,11 @@ namespace FreeInput.Domain
             return false;
         }
 
-        public bool GetPressing(ushort bindID)
-        {
+        public bool GetPressing(ushort bindID) {
             var dic = facades.bindCodeDic;
-            if (dic.TryGetValue(bindID, out var list))
-            {
-                for (int i = 0; i < list.Count; i++)
-                {
-                    if (Input.GetKey(list[i]))
-                    {
+            if (dic.TryGetValue(bindID, out var list)) {
+                for (int i = 0; i < list.Count; i++) {
+                    if (Input.GetKey(list[i])) {
                         return true;
                     }
                 }
@@ -91,15 +73,11 @@ namespace FreeInput.Domain
             return false;
         }
 
-        public bool GetUp(ushort bindID)
-        {
+        public bool GetUp(ushort bindID) {
             var dic = facades.bindCodeDic;
-            if (dic.TryGetValue(bindID, out var list))
-            {
-                for (int i = 0; i < list.Count; i++)
-                {
-                    if (Input.GetKeyUp(list[i]))
-                    {
+            if (dic.TryGetValue(bindID, out var list)) {
+                for (int i = 0; i < list.Count; i++) {
+                    if (Input.GetKeyUp(list[i])) {
                         return true;
                     }
                 }

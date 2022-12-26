@@ -1,10 +1,8 @@
 using UnityEngine;
 
-namespace FreeInput.API.Setter
-{
+namespace FreeInput.API.Setter {
 
-    public interface IFreeInputSetter
-    {
+    public interface IFreeInputSetter {
 
         void Bind(ushort bindID, KeyCode keyCode);
 
