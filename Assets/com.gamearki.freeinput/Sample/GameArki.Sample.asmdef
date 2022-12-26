@@ -1,0 +1,16 @@
+{
+    "name": "GameArki.Sample",
+    "rootNamespace": "",
+    "references": [
+        "GUID:2563dca0e657f5f46b40cbc71840f88f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
