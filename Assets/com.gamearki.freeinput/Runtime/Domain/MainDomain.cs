@@ -1,9 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using FreeInput.Facades;
-using System;
+using GameArki.FreeInput.Facades;
 
-namespace FreeInput.Domain {
+namespace GameArki.FreeInput.Domain {
 
     public class MainDomain {
 

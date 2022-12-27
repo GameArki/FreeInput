@@ -1,9 +1,8 @@
-
 using System.Collections.Generic;
 using UnityEngine;
-using FreeInput.Domain;
+using GameArki.FreeInput.Domain;
 
-namespace FreeInput.Facades {
+namespace GameArki.FreeInput.Facades {
 
     public class FreeInputFacades {
 

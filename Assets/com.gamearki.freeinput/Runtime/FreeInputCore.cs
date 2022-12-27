@@ -1,8 +1,8 @@
-using FreeInput.Facades;
-using FreeInput.API.Setter;
-using FreeInput.API.Getter;
+using GameArki.FreeInput.Facades;
+using GameArki.FreeInput.API.Setter;
+using GameArki.FreeInput.API.Getter;
 
-namespace FreeInput {
+namespace GameArki.FreeInput {
 
     public class FreeInputCore {
 

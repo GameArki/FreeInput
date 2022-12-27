@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FreeInput.Test {
+namespace GameArki.FreeInput.Test {
 
     public class Sample : MonoBehaviour {
 

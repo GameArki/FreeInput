@@ -1,7 +1,7 @@
-using FreeInput.Facades;
 using UnityEngine;
+using GameArki.FreeInput.Facades;
 
-namespace FreeInput.API.Getter {
+namespace GameArki.FreeInput.API.Getter {
 
     public class FreeInputGetter : IFreeInputGetter {
 

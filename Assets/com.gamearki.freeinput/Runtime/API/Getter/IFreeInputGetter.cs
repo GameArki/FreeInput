@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FreeInput.API.Getter {
+namespace GameArki.FreeInput.API.Getter {
 
     public interface IFreeInputGetter {
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FreeInput.API.Setter {
+namespace GameArki.FreeInput.API.Setter {
 
     public interface IFreeInputSetter {
 
