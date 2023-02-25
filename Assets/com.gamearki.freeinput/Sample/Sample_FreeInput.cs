@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GameArki.FreeInput.Test {
 
-    public class Sample : MonoBehaviour {
+    public class Sample_FreeInput : MonoBehaviour {
 
         FreeInputCore core;
         ushort moveBindID = 0;

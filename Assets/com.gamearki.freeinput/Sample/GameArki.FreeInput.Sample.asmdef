@@ -1,5 +1,5 @@
 {
-    "name": "GameArki.Sample",
+    "name": "GameArki.FreeInput.Sample",
     "rootNamespace": "",
     "references": [
         "GUID:2563dca0e657f5f46b40cbc71840f88f"
@@ -10,7 +10,9 @@
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": [],
+    "defineConstraints": [
+        "UNITY_EDITOR"
+    ],
     "versionDefines": [],
     "noEngineReferences": false
 }
